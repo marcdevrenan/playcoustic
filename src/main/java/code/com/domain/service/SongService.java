@@ -3,6 +3,7 @@ package code.com.domain.service;
 import code.com.domain.model.Song;
 import code.com.domain.repository.SongRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -14,7 +15,11 @@ public class SongService {
     private SongRepository songRepository;
 
     public List<Song> getList() {
-        return (List<Song>) songRepository.findAll();
+        return (List<Song>) songRepository.findAll(Sort.by(Sort.Direction.ASC, "title"));
+    }
+
+    public List<Song> getList(String field) {
+        return (List<Song>) songRepository.findAll(Sort.by(Sort.Direction.ASC, field));
     }
 
     public Song getSongById(Integer id) {

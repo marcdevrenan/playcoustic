@@ -26,6 +26,19 @@
 
     <c:if test="${not empty songs}">
         <h2>Song list: ${songs.size()}</h2>
+
+        <form action="/song/order" method="post">
+            <div class="input-group">
+                <select class="form-control" name="sortBy">
+                    <option value="title">Title</option>
+                    <option value="artist">Artist</option>
+                </select>
+                <div class="input-group-btn">
+                    <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+                </div>
+            </div>
+        </form>
+
         <table class="table table-striped">
             <thead>
             <tr>
@@ -43,7 +56,7 @@
                     <td>${song.title}</td>
                     <td>${song.artist}</td>
                     <td><a href="/song/${id.count}/delete">Delete</a></td>
-                    <td><a href="/song/details">Details</a></td>
+                    <td><a href="/song/${song.id}/details">Details</a></td>
                 </tr>
             </c:forEach>
             </tbody>

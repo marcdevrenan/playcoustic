@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class SongController {
@@ -25,9 +26,27 @@ public class SongController {
         return "song/register";
     }
 
-    @GetMapping(value = "/song/details")
-    public String getSong() {
-        return "";
+    @GetMapping(value = "/back")
+    public String back() {
+        return "redirect:/song/list";
+    }
+
+    @PostMapping(value = "/song/order")
+    public String order(Model model, @RequestParam String sortBy) {
+
+        model.addAttribute("songs", songService.getList(sortBy));
+
+        return "song/list";
+    }
+
+    @GetMapping(value = "/song/{id}/details")
+    public String getSong(Model model, @PathVariable Integer id) {
+
+        Song song = songService.getSongById(id);
+
+        model.addAttribute("song", song);
+
+        return "song/register";
     }
 
     @PostMapping(value = "/song/add")
