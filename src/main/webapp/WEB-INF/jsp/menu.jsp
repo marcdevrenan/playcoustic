@@ -5,6 +5,7 @@
         </div>
         <ul class="nav navbar-nav">
             <li class="active"><a href="/">Home</a></li>
+            <li><a href="/user/list">Users</a></li>
             <li><a href="/song/list">Songs</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">

@@ -22,16 +22,16 @@
         </div>
     </c:if>
 
-    <h3><a href="/song">Add new song</a></h3>
+    <h3><a href="/user">Add new user</a></h3>
 
-    <c:if test="${not empty songs}">
-        <h2>Song list: ${songs.size()}</h2>
+    <c:if test="${not empty users}">
+        <h2>User list: ${users.size()}</h2>
 
-        <form action="/song/order" method="post">
+        <form action="/user/order" method="post">
             <div class="input-group">
                 <select class="form-control" name="sortBy">
-                    <option value="title">Title</option>
-                    <option value="artist">Artist</option>
+                    <option value="firstName">First Name</option>
+                    <option value="birthDate">Birth Date</option>
                 </select>
                 <div class="input-group-btn">
                     <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
@@ -43,28 +43,28 @@
             <thead>
             <tr>
                 <th>Id</th>
-                <th>Title</th>
-                <th>Artist</th>
+                <th>First Name</th>
+                <th>Birth Date</th>
                 <th></th>
                 <th></th>
             </tr>
             </thead>
             <tbody>
-            <c:forEach var="song" items="${songs}" varStatus="id">
+            <c:forEach var="user" items="${users}" varStatus="id">
                 <tr>
                     <td>${id.count}</td>
-                    <td>${song.title}</td>
-                    <td>${song.artist}</td>
-                    <td><a href="/song/${song.id}/delete">Delete</a></td>
-                    <td><a href="/song/${song.id}/details">Details</a></td>
+                    <td>${user.firstName}</td>
+                    <td>${user.birthDate}</td>
+                    <td><a href="/user/${user.id}/delete">Delete</a></td>
+                    <td><a href="/user/${user.id}/details">Details</a></td>
                 </tr>
             </c:forEach>
             </tbody>
         </table>
     </c:if>
 
-    <c:if test="${empty songs}">
-        <h2>There are no songs registered!</h2>
+    <c:if test="${empty users}">
+        <h2>There are no users registered!</h2>
     </c:if>
 
 </div>

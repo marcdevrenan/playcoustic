@@ -14,49 +14,45 @@
 
 <c:import url="/WEB-INF/jsp/menu.jsp"/>
 
-<c:set var="title" value="Song Registration"/>
-<c:set var="route" value="/song/add"/>
+<c:set var="title" value="User Registration"/>
+<c:set var="route" value="/user/add"/>
 <c:set var="method" value="post"/>
 <c:set var="button" value="Register"/>
 
-<c:if test="${not empty song}">
-    <c:set var="title" value="Song Details"/>
-    <c:set var="route" value="/back"/>
+<c:if test="${not empty user}">
+    <c:set var="title" value="User Details"/>
+    <c:set var="route" value="/goBack"/>
     <c:set var="method" value="get"/>
     <c:set var="button" value="Back"/>
 </c:if>
 
 <div class="container">
-    <h2>Adding music to setlist</h2>
+    <h2>Adding new user</h2>
 
     <form action="${route}" method="${method}">
         <div class="form-group">
-            <label>Title:</label>
-            <input type="text" class="form-control" value="${song.title}" placeholder="Song title" name="title">
+            <label>First name:</label>
+            <input type="text" class="form-control" value="${user.firstName}" placeholder="First name" name="firstName">
         </div>
 
         <div class="form-group">
-            <label>Album:</label>
-            <input type="text" class="form-control" value="${song.album}" placeholder="Album title" name="album">
+            <label>Last name:</label>
+            <input type="text" class="form-control" value="${user.lastName}" placeholder="last name" name="lastName">
         </div>
 
         <div class="form-group">
-            <label>Artist:</label>
-            <input type="text" class="form-control" value="${song.artist}" placeholder="Artist name" name="artist">
+            <label>Birth Date:</label>
+            <input type="date" class="form-control" value="${user.birthDate}" name="birthDate">
         </div>
 
         <div class="form-group">
-            <label>Release Date:</label>
-            <input type="date" class="form-control" value="${song.releaseDate}" name="releaseDate">
+            <label>Email:</label>
+            <input type="text" class="form-control" value="${user.email}" placeholder="example@test.com" name="email">
         </div>
 
         <div class="form-group">
-            <label>Difficulty Level:</label>
-            <select class="form-control" value="${song.difficultyLevel}" name="difficultyLevel">
-                <option>Easy</option>
-                <option>Medium</option>
-                <option>Hard</option>
-            </select>
+            <label>Password:</label>
+            <input type="password" class="form-control" value="${user.password}" name="password">
         </div>
 
         <button type="submit" class="btn btn-default">${button}</button>
