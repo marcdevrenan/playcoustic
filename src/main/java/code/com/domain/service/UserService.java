@@ -14,6 +14,10 @@ public class UserService {
     @Autowired
     private UserRepository userRepository;
 
+    public User validate(String email, String password) {
+        return userRepository.authentication(email, password);
+    }
+
     public List<User> getList() {
         return (List<User>) userRepository.findAll(Sort.by(Sort.Direction.ASC, "firstName"));
     }

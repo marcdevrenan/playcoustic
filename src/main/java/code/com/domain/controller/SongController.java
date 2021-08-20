@@ -16,10 +16,10 @@ public class SongController {
     @Autowired
     private SongService songService;
 
-    @GetMapping(value = "/")
-    public String initialize() {
-        return "index";
-    }
+//    @GetMapping(value = "/")
+//    public String initialize() {
+//        return "index";
+//    }
 
     @GetMapping(value = "/song")
     public String registrationScreen() {
